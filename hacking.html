@@ -1,0 +1,130 @@
+<div>
+    <div id="vignette" style="max-width: 800px;">
+        <div class="heading">Deine Aufgabe: Dokumente hacken</div>
+        <div class="smalltext">
+            <p>
+                Es soll ein Server der Universität Jena gehackt werden. Du wirst die unten eingeblendete Konsole verwenden, um dich mit dem Computer zu verbinden und diesen nach interessanten Informationen durchsuchen. Verwende hierzu die folgende Anleitung.
+            </p>
+        </div>
+        <div class="subheading">Schritt 1: Angriffsziel identifizieren</div>
+        <div class="smalltext">
+            <p>
+                Auf dem zu hackenden Server wird auch die Webseite der Universität betrieben. Öffne diese in einem zweiten Browserfenster und suche nach einem Login-Bereich. Sobald du den Login-Bereich gefunden hast, kopiere seine Adresse aus dem Browserfenster.
+            </p>
+        </div>
+        <div class="subheading">Schritt 2: Brute-Force-Attacke starten</div>
+        <div class="smalltext">
+            <p>
+                Nutzername und Passwort werden benötigt, um auf den Server zugreifen und Daten einsehen zu können. Da du die Zugangsinformationen nicht besitzt, musst du dir über einen Brute-Force-Angriff Zutritt verschaffen. Dabei werden Nutzername und Passwort von einem Programm solange geraten, bis die richtige Kombination gefunden ist. <span class="placeholder-tool-1">AAAAAA</span> ist ein solches Programm. Du startest es, indem du in der Konsole den Befehl <strong><span class="placeholder-tool-1"></span></strong> eingibst und mittels Enter-Taste abschickst. Du wirst anschließend nach einer Adresse gefragt, die attackiert werden soll. Gib hier die Adresse des Login-Bereichs aus Schritt 1 ein. Anschließend wird <span class="placeholder-tool-1"></span> versuchen, die Zugangsinformationen herauszubekommen.
+            </p>
+        </div>
+        <div class="subheading">Schritt 3: Datenverbindung herstellen</div>
+        <div class="smalltext">
+            <p>
+                Sobald die Zugangsinformationen gefunden wurden, kannst du den Rechner nach Daten durchsuchen. Stelle hierfür zunächst eine Datenverbindung mit einem Programm namens <span class="placeholder-tool-2"></span> her, das du über den gleichnamigen Befehl <strong><span class="placeholder-tool-2"></span></strong> startest. Anschließend wird eine Liste aller auf dem Computer vorhandenen Ordner angezeigt.
+            </p>
+        </div>
+        <div class="subheading">Schritt 4: Computer durchsuchen</div>
+        <div class="smalltext">
+            <p>
+                Um die in einem Ordner abgelegten Dateien einzusehen, kannst du den Befehl <strong>Open</strong> gefolgt vom Namen des zu öffnenden Ordners nutzen (z.B. <i>Open Dokumente</i>, falls es einen Ordner <i>Dokumente</i> auf dem Rechner gibt).
+            </p>
+            <p>
+                Anschließend wird angezeigt, welche Dateien sich im Ordner befinden. Wenn du auf eine Datei klickst, wird ihr Inhalt in einem neuen Tab angezeigt. Du kannst sie anschließend auf deinem Computer speichern. Versuche alle Dokumente anzusehen und herunterzuladen.
+            </p>
+        </div>
+        <div class="heading">Angriff erfolgreich?</div>
+        <div class="smalltext">
+            <p>
+                Sobald du alle Dokumente angesehen und heruntergeladen hast, bist du für den zweiten Teil der Studie qualifiziert. Bitte beantworte die nachfolgenden Fragen, damit der Erfolg deines Hacks überprüft werden kann. Klicke dann auf Weiter.
+            </p>
+            <br>
+            <fieldset>  
+                <legend>Welche Programme hast du während des Hacks verwendet?</legend>  
+                <div>
+                    <input type="checkbox" id="Aircrack" value="Aircrack" name="tools">
+                    <label for="Aircrack">Aircrack</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Grover" value="Grover" name="tools">
+                    <label for="Grover">Grover</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Hashcat" value="Hashcat" name="tools">
+                    <label for="Hashcat">Hashcat</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Medusa" value="Medusa" name="tools">
+                    <label for="Medusa">Medusa</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Wireshark" value="Wireshark" name="tools">
+                    <label for="Wireshark">Wireshark</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Sniper" value="Sniper" name="tools">
+                    <label for="Sniper">Sniper</label>
+                </div>
+            </fieldset>  
+            <br>
+            <fieldset>  
+                <legend>Welche Dokumente konntest du stehlen?</legend> 
+                <div>
+                    <input type="checkbox" id="Klausuren" value="Klausuren" name="documents">
+                    <label for="Klausuren">Klausuren</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Lohnscheine" value="Lohnscheine" name="documents">
+                    <label for="Lohnscheine">Lohnscheine</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Manuskripte" value="Manuskripte" name="documents">
+                    <label for="Manuskripte">Manuskripte</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Notenlisten" value="Notenlisten" name="documents">
+                    <label for="Notenlisten">Notenlisten</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Verträge" value="Verträge" name="documents">
+                    <label for="Verträge">Verträge</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Zeugnisse" value="Zeugnisse" name="documents">
+                    <label for="Zeugnisse">Zeugnisse</label>
+                </div>
+            </fieldset>  
+            <br>
+            <fieldset>  
+                <legend>Aus welchen Instituten stammen die Dokumente?</legend> 
+                <div>
+                    <input type="checkbox" id="Bioinformatik" value="Bioinformatik" name="institutes">
+                    <label for="Bioinformatik">Bioinformatik</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Kunstgeschichte" value="Kunstgeschichte" name="institutes">
+                    <label for="Kunstgeschichte">Kunstgeschichte</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Lasertechnik" value="Lasertechnik" name="institutes">
+                    <label for="Lasertechnik">Lasertechnik</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Philosophie" value="Philosophie" name="institutes">
+                    <label for="Philosophie">Philosophie</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Sportmanagement" value="Sportmanagement" name="institutes">
+                    <label for="Sportmanagement">Sportmanagement</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Zahnmedizin" value="Zahnmedizin" name="institutes">
+                    <label for="Zahnmedizin">Zahnmedizin</label>
+                </div>
+            </fieldset> 
+
+            <button class="navbutton" type="button" id="next">Weiter</button>
+        </div>
+    </div>
+</div>
+<div style="height: 300px;"></div>
