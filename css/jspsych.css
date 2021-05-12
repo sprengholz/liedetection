@@ -758,7 +758,7 @@ html, body {
 }
 
 .question {
-    font-size: 45px;
+    font-size: 40px;
     line-height: normal;
     font-family: monospace;
     
@@ -892,7 +892,7 @@ html, body {
 }
 
 .target {
-    font-size: 45px;
+    font-size: 40px;
     font-family: monospace;
     padding: 50px;
     color: #000;

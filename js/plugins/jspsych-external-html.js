@@ -83,11 +83,6 @@ jsPsych.plugins['external-html'] = (function() {
     xmlhttp.onload = function(){
         if(xmlhttp.status == 200 || xmlhttp.status == 0){ //Check if loaded
             element.innerHTML = xmlhttp.responseText;
-
-            // just for this experiment - no standard commands
-            $('.placeholder-tool-1').text(nonsecrets[1]);
-            $('.placeholder-tool-2').text(secrets[1]);
-            
             callback();
         }
     }

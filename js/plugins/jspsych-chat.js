@@ -125,7 +125,7 @@ jsPsych.plugins['chat'] = (function () {
             // falls keine Nachrichten mehr vorhanden, Chat beenden
             if (trial.conversation.length === 0)
             {
-                $("#sendMessageButton").hide();
+                $("#sendMessageButton").prop( "disabled", true );//.hide();
                 setTimeout(function(){
                     finishChat();   
                 },5000);
