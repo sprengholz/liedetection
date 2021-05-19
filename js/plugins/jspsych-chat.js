@@ -37,15 +37,10 @@ jsPsych.plugins['chat'] = (function () {
                 }
             }
             
-            display_element.querySelector('#openPressTextButton').addEventListener('click', openPressText);
             display_element.querySelector('#sendMessageButton').addEventListener('click', check);
             
         });
 
-        function openPressText(){
-            $('#presstextContainer').html(presstext);
-            $('#presstextContainer').slideDown();
-        }
             
         var check = function() {
 

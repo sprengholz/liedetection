@@ -217,6 +217,10 @@
      * Global Variables
      */
 
+    // key
+    key_truth = 75
+    key_lie = 68
+
     // control group (0) or hacking group (1)
     var group = Math.round(Math.random()); 
     $('#groupOverlay').text(" - G"+group);
@@ -231,13 +235,17 @@
     // questions
     var questions_critical = [
         'Sind Sie für den Hack verantwortlich?',
-        'Haben Sie die Dokumente gestohlen?',
-        'Was haben Sie zur Tatzeit gemacht?'
+        'Was haben Sie zur Tatzeit gemacht?',
+        'Welche Dokumente haben Sie gestohlen?',
+        'Welche Institute haben Sie bestohlen?',
+        'Welches Werkzeug haben Sie beim Hack verwendet?'
     ];
 
     var questions_uncritical = [
-        'In welchem Fach studieren Sie?',
-        'Sind Sie mal durch eine Prüfung gefallen?',
+        'Wie alt sind Sie?',
+        'Wo wohnen Sie?',
+        'Seit wann studieren Sie in Jena?',
+        'Was studieren Sie?',
         'Arbeiten Sie als Hilfskraft an der Uni?'
     ];
 
@@ -281,7 +289,7 @@
     var tasks = [];
 
     for (i = 0; i < questions_critical.length; i++) {
-        for (j = 0; j < 8; j++) {
+        for (j = 0; j < 5; j++) {
             task = {
                 question: questions_critical[i],
                 critical: true,
@@ -298,7 +306,7 @@
     }
 
     for (i = 0; i < questions_uncritical.length; i++) {
-        for (j = 0; j < 8; j++) {
+        for (j = 0; j < 5; j++) {
             task = {
                 question: questions_uncritical[i],
                 critical: true,
@@ -643,7 +651,7 @@
     var sherlock_welcome = {
         type: 'html-button-response',
         choices: ["Weiter"],
-        stimulus: '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms"><strong>Guten Tag.</strong></div><div class="smalltext-ms">Mein Name ist Sherlock. Ich bin ein Programm, das zur Untersuchung von Straftaten eingesetzt wird. Ich werde Ihnen zunächst einige Fragen stellen und anschließend überprüfen, ob Sie mich belogen haben.</div><div class="smalltext-ms">Ich möchte Sie zunächst bitten, den folgenden Text aufmerksam zu lesen. Es handelt sich um eine Pressemitteilung zur Tat.</div><br><div class="smalltext-ms">'+presstext+'</div><br><div class="smalltext-ms">Wenn Sie alles aufmerksam gelesen haben, klicken Sie bitte auf Weiter.</div></div></div></div>',
+        stimulus: '<div class="rteInstructionContainer" style="min-height: 0; padding-top: 0;"><div class="instruction"><div class="smalltext-ms"><strong>Guten Tag.</strong></div><div class="smalltext-ms">Mein Name ist Sherlock. Ich bin ein Programm, das zur Untersuchung von Straftaten eingesetzt wird. Ich werde Ihnen zunächst einige Fragen stellen und anschließend überprüfen, ob Sie mich belogen haben.</div></div></div>',
         on_load: function(){
             showInvestigator();
         }
@@ -688,7 +696,25 @@
                 {
                     person: 'Subject',
                     evaluate_answer: false,
-                    message: 'Danke. Kommen wir zur Tat.'
+                    message: 'Aha.'
+                },
+                {
+                    person: 'Ermittler',
+                    text: questions_uncritical[3]
+                },
+                {
+                    person: 'Subject',
+                    evaluate_answer: false,
+                    message: 'Ok.'
+                },
+                {
+                    person: 'Ermittler',
+                    text: questions_uncritical[4]
+                },
+                {
+                    person: 'Subject',
+                    evaluate_answer: false,
+                    message: 'Kommen wir zur Tat.'
                 },
                 {
                     person: 'Ermittler',
@@ -706,11 +732,29 @@
                 {
                     person: 'Subject',
                     evaluate_answer: false,
-                    message: 'Ok. Letzte Frage:'
+                    message: 'Hm...'
                 },
                 {
                     person: 'Ermittler',
                     text: questions_critical[2]
+                },
+                {
+                    person: 'Subject',
+                    evaluate_answer: false,
+                    message: 'Alles klar.'
+                },
+                {
+                    person: 'Ermittler',
+                    text: questions_critical[3]
+                },
+                {
+                    person: 'Subject',
+                    evaluate_answer: false,
+                    message: 'Ok. Letzte Frage:'
+                },
+                {
+                    person: 'Ermittler',
+                    text: questions_critical[4]
                 },
                 {
                     person: 'Subject',
@@ -771,9 +815,9 @@
             stimulus = jsPsych.timelineVariable('target')();
             text = ""
             if (stimulus == "ehrlich") {
-                text = shuffle(["$eh%rl&ic#h§", "%eh$rl?ic§h#", "&eh#rl%ic?h$", "&e#hr%li?ch&", "#e?hr$li#ch$", "$e&hr#li?ch§"])[0];
+                text = shuffle(["e%hr#li&ch$", "e&hr+li$ch&", "e§hr?li#ch+", "e$hr&li+ch#", "&eh#rl%ic?h$", "&e#hr%li?ch&", "#e?hr$li#ch$", "$e&hr#li?ch§", "+#e%hr$li&ch§", "%&e+hr$li?ch$"])[0];
             } else {
-                text = shuffle(["$ge%lo&ge#n§", "%ge$lo?ge§n#", "&ge#lo%ge?n$", "&g#el%og?en&", "#g?el$og#en$", "$g&el#og?en§"])[0];
+                text = shuffle(["g%el#og&en$", "g&el+og$en&", "g§el?og#en+", "g$el&og+en#", "&ge#lo%ge?n$", "&g#el%og?en&", "#g?el$og#en$", "$g&el#og?en§", "+#g%el$og&en§", "%&g+el$og?en$"])[0];
             }
             
             html = '<div class="target">' + text + '</div>';
@@ -781,7 +825,7 @@
             return html;
         },
         trial_duration: 1500,
-        choices: [68, 75],
+        choices: [key_truth, key_lie],
         data: { 
             rte_part: 'target'
         },
@@ -791,7 +835,7 @@
         on_finish: function(data){
             data.question = jsPsych.timelineVariable('question')();
             data.target = jsPsych.timelineVariable('target')();
-            if ((data.key_press == 68 && data.target == "ehrlich") || (data.key_press == 75 && data.target == "gelogen")){
+            if ((data.key_press == key_truth && data.target == "ehrlich") || (data.key_press == key_lie && data.target == "gelogen")){
                 data.correct = true;
             } else {
                 data.correct = false;
@@ -814,9 +858,9 @@
             //target = jsPsych.data.get().last(1).values()[0].trial_target;
             intime = jsPsych.data.get().last(1).values()[0].intime;
             if (intime) {
-                return '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms"><strong>Verdächtig!</strong> Sie haben die falsche Taste gedrückt. Drücken Sie so schnell wie möglich <span class="keyButton">D</span> wenn das Wort <strong>ehrlich</strong> erscheint und <span class="keyButton">K</span> wenn das Wort <strong>gelogen</strong> erscheint.</div><div class="smalltext-ms">Drücken Sie die <span class="keyButton">Leertaste</span> um mit der nächsten Frage fortzufahren.</div></div></div>';
+                return '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms"><strong>Verdächtig!</strong> Sie haben die falsche Taste gedrückt. Drücken Sie so schnell wie möglich <span class="keyButton">K</span> wenn das Wort <strong>ehrlich</strong> erscheint und <span class="keyButton">D</span> wenn das Wort <strong>gelogen</strong> erscheint.</div><div class="smalltext-ms">Drücken Sie die <span class="keyButton">Leertaste</span> um mit der nächsten Frage fortzufahren.</div></div></div>';
             } else {
-                return '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms"><strong>Verdächtig!</strong> Sie waren zu langsam. Drücken Sie so schnell wie möglich <span class="keyButton">D</span> wenn das Wort <strong>ehrlich</strong> erscheint und <span class="keyButton">K</span> wenn das Wort <strong>gelogen</strong> erscheint.</div><div class="smalltext-ms">Drücken Sie die <span class="keyButton">Leertaste</span> um mit der nächsten Frage fortzufahren.</div></div></div>';
+                return '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms"><strong>Verdächtig!</strong> Sie waren zu langsam. Drücken Sie so schnell wie möglich <span class="keyButton">K</span> wenn das Wort <strong>ehrlich</strong> erscheint und <span class="keyButton">D</span> wenn das Wort <strong>gelogen</strong> erscheint.</div><div class="smalltext-ms">Drücken Sie die <span class="keyButton">Leertaste</span> um mit der nächsten Frage fortzufahren.</div></div></div>';
             }  
         },
         choices: [32],
@@ -937,7 +981,7 @@
             
             lastPart = jsPsych.data.get().last(1).values()[0].rte_part;
             if (lastPart !== 'target_error') {
-                chance = 0.075;
+                chance = 0.1;
                 if (Math.random() < chance) {
                     // 50/50 chance to check question prime or target word
                     if (Math.random() < 0.5) {
@@ -1032,7 +1076,7 @@
 
     var rte_start = {
         type: 'html-keyboard-response',
-        stimulus: '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms">Denken Sie daran, immer dann <span class="keyButton">D</span> zu drücken, wenn das Wort <strong>ehrlich</strong> nach einer Frage erscheint und <span class="keyButton">K</span> wenn das Wort <strong>gelogen</strong> gezeigt wird. Wenn Sie bereit sind, positionieren Sie jetzt Ihre Zeigefinger auf den beiden Tasten. Das Ganze wird etwa 15 Minuten dauern. Stellen Sie sicher, dass Sie in dieser Zeit nicht gestört werden.</div><div class="smalltext-ms">Drücken Sie mit dem Daumen die <span class="keyButton">Leertaste</span> um zu beginnen.</div></div></div>',
+        stimulus: '<div class="rteInstructionContainer"><div class="instruction"><div class="smalltext-ms">Denken Sie daran, immer dann <span class="keyButton">K</span> zu drücken, wenn das Wort <strong>ehrlich</strong> nach einer Frage erscheint und <span class="keyButton">D</span> wenn das Wort <strong>gelogen</strong> gezeigt wird. Wenn Sie bereit sind, positionieren Sie jetzt Ihre Zeigefinger auf den beiden Tasten. Das Ganze wird etwa 15 Minuten dauern. Stellen Sie sicher, dass Sie in dieser Zeit nicht gestört werden.</div><div class="smalltext-ms">Drücken Sie mit dem Daumen die <span class="keyButton">Leertaste</span> um zu beginnen.</div></div></div>',
         choices: [32],
         data: { 
             rte_part: 'rte_pt2_start'
