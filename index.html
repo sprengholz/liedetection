@@ -326,7 +326,7 @@
 
     var tutorialTasks = tasks.slice();
     tutorialTasks = shuffle(tasks);
-    tutorialTasks = tutorialTasks.slice(0,20);
+    tutorialTasks = tutorialTasks.slice(0,15);
 
     // shuffle items
     tasks = shuffle(tasks);
@@ -342,7 +342,7 @@
     var welcome = {
         type: 'html-button-response',
         choices: ["Weiter"],
-        stimulus: '<div class="instruction" style="max-width: 600px; margin-top: 110px;"><div class="heading">Hi</div><div class="smalltext"> Vielen Dank für dein Interesse an der vorliegenden Studie. Im Falle einer Teilnahme sollst du verschiedene Aufgaben am <strong>PC oder Notebook</strong> bearbeiten. Hierfür benötigst du eine richtige Tastatur - Tablets oder Smartphones sind also nicht geeignet. Das Ganze wird etwa <strong>45 Minuten</strong> dauern.</div><div class="smalltext">Die Teilnahme an der Studie hat keine bekannten Risiken. Alle gesammelten Daten werden <strong>anonym</strong> ausgewertet, ausschließlich für nicht-kommerzielle Zwecke im Rahmen wissenschaftlicher Forschung verwendet und nicht an Dritte weitergegeben. Eine nachträgliche Identifizierung deiner Daten ist nicht möglich (Privacy by Design, §25 DSGVO). Rückfragen zum Datenschutz können an die Datenschutzbeauftragte der Universität gerichtet werden:</div><div class="smalltext">Stefanie Buchmann<br>+49 3641 931087<br>stefanie.buchmann@uni-jena.de</div><div class="smalltext">Du kannst die Bearbeitung zu jeder Zeit und ohne Angabe von Gründen beenden. Bitte beachte, dass dir bei einem Abbruch aus technischen Gründen keine Versuchspersonenstunde ausgestellt werden kann. Diese erhältst du nach Abschluss des Experiments.</div><div class="smalltext">Wenn du Fragen zur Studie hast oder an den Ergebnissen interessiert bist, sende bitte eine E-Mail an:<div><div class="smalltext">Philipp Sprengholz<br>FSU Jena, Institut für Psychologie<br>philipp.sprengholz@uni-jena.de</div><div class="smalltext"><strong>Durch Klicken des folgenden Buttons bestätigst du, dass du alle Informationen gelesen und verstanden hast und an der Studie teilnehmen möchtest.</strong></div></div>'
+        stimulus: '<div class="instruction" style="max-width: 600px; margin-top: 110px;"><div class="heading">Hi</div><div class="smalltext"> Vielen Dank für dein Interesse an der vorliegenden Studie. Im Falle einer Teilnahme sollst du verschiedene Aufgaben am <strong>PC oder Notebook</strong> bearbeiten. Hierfür benötigst du eine richtige Tastatur - Tablets oder Smartphones sind also nicht geeignet. Das Ganze wird etwa <strong>30 bis 40 Minuten</strong> dauern.</div><div class="smalltext">Die Teilnahme an der Studie hat keine bekannten Risiken. Alle gesammelten Daten werden <strong>anonym</strong> ausgewertet, ausschließlich für nicht-kommerzielle Zwecke im Rahmen wissenschaftlicher Forschung verwendet und nicht an Dritte weitergegeben. Eine nachträgliche Identifizierung deiner Daten ist nicht möglich (Privacy by Design, §25 DSGVO). Rückfragen zum Datenschutz können an die Datenschutzbeauftragte der Universität gerichtet werden:</div><div class="smalltext">Stefanie Buchmann<br>+49 3641 931087<br>stefanie.buchmann@uni-jena.de</div><div class="smalltext">Du kannst die Bearbeitung zu jeder Zeit und ohne Angabe von Gründen beenden. Bitte beachte, dass dir bei einem Abbruch aus technischen Gründen keine Versuchspersonenstunde ausgestellt werden kann. Diese erhältst du nach Abschluss des Experiments.</div><div class="smalltext">Wenn du Fragen zur Studie hast oder an den Ergebnissen interessiert bist, sende bitte eine E-Mail an:<div><div class="smalltext">Philipp Sprengholz<br>FSU Jena, Institut für Psychologie<br>philipp.sprengholz@uni-jena.de</div><div class="smalltext"><strong>Durch Klicken des folgenden Buttons bestätigst du, dass du alle Informationen gelesen und verstanden hast und an der Studie teilnehmen möchtest.</strong></div></div>'
     };
     timeline.push(welcome);
 
@@ -386,6 +386,7 @@
 
             if (/^([1-9][0-9])$/.test(age)) {
                 sex = $('#sex').val();
+                hand = $('#hand').val();
                 return true;
             } else {
                 showAlert('Bitte gib dein korrektes Alter ein.');
@@ -396,6 +397,7 @@
             clearAlerts();
             data.age = age;
             data.sex = sex;
+            data.hand = hand;
             data.group = group;
         }
     };
@@ -496,8 +498,8 @@
                             terminal.echo("----------------------------------------------");
                             terminal.echo("Folder               Files       Last accessed");
                             terminal.echo("----------------------------------------------");
-                            terminal.echo("+ "+("Bioinformatik").padEnd(15, " ")+"    0             13 days ago");
-                            terminal.echo("+ "+("Philosophie").padEnd(15, " ")+"    0             18 days ago");
+                            terminal.echo("+ "+("Bioinformatik").padEnd(15, " ")+"    2             13 days ago");
+                            terminal.echo("+ "+("Philosophie").padEnd(15, " ")+"    2             18 days ago");
                             terminal.echo("----------------------------------------------");
                             clearInterval(interval);
                             terminal.resume();
@@ -529,7 +531,7 @@
                             }
 
                             this.echo("----------------------------------------------");
-                            this.echo("Folder Bioinformatik contains "+filesToShow.length+" files");
+                            this.echo("Folder Bioinformatik contains 2 files");
                             this.echo("----------------------------------------------");
 
                             for (file of filesToShow) {
@@ -551,7 +553,7 @@
                             }
 
                             this.echo("----------------------------------------------");
-                            this.echo("Folder Philosophie contains "+filesToShow.length+" files");
+                            this.echo("Folder Philosophie contains 2 files");
                             this.echo("----------------------------------------------");
 
                             for (file of filesToShow) {
@@ -815,9 +817,9 @@
             stimulus = jsPsych.timelineVariable('target')();
             text = ""
             if (stimulus == "ehrlich") {
-                text = shuffle(["e%hr#li&ch$", "e&hr+li$ch&", "e§hr?li#ch+", "e$hr&li+ch#", "&eh#rl%ic?h$", "&e#hr%li?ch&", "#e?hr$li#ch$", "$e&hr#li?ch§", "+#e%hr$li&ch§", "%&e+hr$li?ch$"])[0];
+                text = shuffle(["e%hr#li&ch$+", "e&hr+li$ch&", "e§hr?li#ch$", "&e#hr%li?ch&", "#e?hr$li#ch$", "$e&hr#li?ch§", "+#e%hr$li&ch§", "%&e+hr$li?ch$", "!%eh#r$li?ch&", "$e&h#r$li?c!h+"])[0];
             } else {
-                text = shuffle(["g%el#og&en$", "g&el+og$en&", "g§el?og#en+", "g$el&og+en#", "&ge#lo%ge?n$", "&g#el%og?en&", "#g?el$og#en$", "$g&el#og?en§", "+#g%el$og&en§", "%&g+el$og?en$"])[0];
+                text = shuffle(["g%el#og&en$+", "g&el+og$en&", "g§el?og#en$", "&g#el%og?en&", "#g?el$og#en$", "$g&el#og?en§", "+#g%el$og&en§", "%&g+el$og?en$", "!%ge#l$og?en&", "$g&e#l$og?e!n+"])[0];
             }
             
             html = '<div class="target">' + text + '</div>';
@@ -912,7 +914,7 @@
 
                 lastQuestion = jsPsych.timelineVariable('question')();
                 var otherQuestions = questions_critical.slice();
-                otherQuestions = otherQuestions.concat(questions_critical);
+                otherQuestions = otherQuestions.concat(questions_uncritical);
 
                 for (i = 0; i < otherQuestions.length; i++) {
                     if (otherQuestions[i] === lastQuestion) {

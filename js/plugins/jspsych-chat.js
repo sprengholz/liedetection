@@ -46,9 +46,9 @@ jsPsych.plugins['chat'] = (function () {
 
             field = $('#messageInput');
             textToSend = field.val().trim();
-            if (textToSend.length == 0){
-                textToSend = "&nbsp;";
-            }
+            if ((textToSend.trim()).length !== 0){
+                
+            
             
             attempts.push(textToSend);
             
@@ -116,6 +116,8 @@ jsPsych.plugins['chat'] = (function () {
                     }
                 }
             }
+
+        }
             
             // falls keine Nachrichten mehr vorhanden, Chat beenden
             if (trial.conversation.length === 0)
@@ -164,7 +166,7 @@ jsPsych.plugins['chat'] = (function () {
                 $('#messageArea').append('<div class="message"><div class="messageOther" style="display: none;"><code>'+message.text+'</code></div></div>').slideDown("fast");
                 $('div.messageOther').fadeIn();
                 $('#messageArea').scrollTop(1E10);
-            },1000);
+            },100);
             
         }
         
