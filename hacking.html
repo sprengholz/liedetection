@@ -6,25 +6,19 @@
                 Es soll ein Server der Universität Jena gehackt werden. Du wirst die unten eingeblendete Konsole verwenden, um dich mit dem Computer zu verbinden und diesen nach interessanten Informationen durchsuchen. Verwende hierzu die folgende Anleitung.
             </p>
         </div>
-        <div class="subheading">Schritt 1: Angriffsziel identifizieren</div>
+        <div class="subheading">Schritt 1: Brute-Force-Attacke starten</div>
         <div class="smalltext">
             <p>
-                Auf dem zu hackenden Server wird auch die Webseite der Universität betrieben. Öffne diese in einem zweiten Browserfenster und suche nach einem Login-Bereich. Sobald du den Login-Bereich gefunden hast, kopiere seine Adresse aus dem Browserfenster.
+                Nutzername und Passwort werden benötigt, um auf den Server zugreifen und Daten einsehen zu können. Da du die Zugangsinformationen nicht besitzt, musst du dir über einen Brute-Force-Angriff Zutritt verschaffen. Dabei werden Nutzername und Passwort von einem Programm solange geraten, bis die richtige Kombination gefunden ist. Aircrack ist ein solches Programm. Du startest es, indem du in der Konsole den Befehl <strong>Aircrack</strong> eingibst und mittels Enter-Taste abschickst. Du wirst anschließend nach einer Adresse gefragt, die attackiert werden soll. Gib hier die Adresse des Login-Bereichs <strong>https://www.uni-jena.de/login</strong> ein. Anschließend wird Aircrack versuchen, die Zugangsinformationen herauszubekommen.
             </p>
         </div>
-        <div class="subheading">Schritt 2: Brute-Force-Attacke starten</div>
-        <div class="smalltext">
-            <p>
-                Nutzername und Passwort werden benötigt, um auf den Server zugreifen und Daten einsehen zu können. Da du die Zugangsinformationen nicht besitzt, musst du dir über einen Brute-Force-Angriff Zutritt verschaffen. Dabei werden Nutzername und Passwort von einem Programm solange geraten, bis die richtige Kombination gefunden ist. Aircrack ist ein solches Programm. Du startest es, indem du in der Konsole den Befehl <strong>Aircrack</strong> eingibst und mittels Enter-Taste abschickst. Du wirst anschließend nach einer Adresse gefragt, die attackiert werden soll. Gib hier die Adresse des Login-Bereichs aus Schritt 1 ein. Anschließend wird Aircrack versuchen, die Zugangsinformationen herauszubekommen.
-            </p>
-        </div>
-        <div class="subheading">Schritt 3: Datenverbindung herstellen</div>
+        <div class="subheading">Schritt 2: Datenverbindung herstellen</div>
         <div class="smalltext">
             <p>
                 Sobald die Zugangsinformationen gefunden wurden, kannst du den Rechner nach Daten durchsuchen. Stelle hierfür zunächst eine Datenverbindung mit einem Programm namens Medusa her, das du über den gleichnamigen Befehl <strong>Medusa</strong> startest. Anschließend wird eine Liste aller auf dem Computer vorhandenen Ordner angezeigt.
             </p>
         </div>
-        <div class="subheading">Schritt 4: Computer durchsuchen</div>
+        <div class="subheading">Schritt 3: Computer durchsuchen</div>
         <div class="smalltext">
             <p>
                 Um die in einem Ordner abgelegten Dateien einzusehen, kannst du den Befehl <strong>Open</strong> gefolgt vom Namen des zu öffnenden Ordners nutzen (z.B. <i>Open Dokumente</i>, falls es einen Ordner <i>Dokumente</i> auf dem Rechner gibt).
